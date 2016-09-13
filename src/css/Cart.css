@@ -1,0 +1,6 @@
+.Cart {
+	padding: 8px;
+	background-color: blue;
+    flex: 3; 
+  	justify-content: flex-start;
+}
