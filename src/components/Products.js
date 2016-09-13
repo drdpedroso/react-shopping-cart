@@ -14,7 +14,6 @@ class Products extends Component {
     this.props.addProduct(item);
   }
 
-
   mountTable(){
     let listItems = products.map((item) =>{
       return (

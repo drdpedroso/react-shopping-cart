@@ -7,7 +7,7 @@ class Cart extends Component {
     let listItems = this.props.products.map((item) =>{
       return (
           <li key={item.name}> 
-            {item.name} {item.price}
+            {item.name} {item.price} {item.qtd}
           </li> 
         ); 
       }); 
