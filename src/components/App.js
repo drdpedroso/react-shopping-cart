@@ -14,45 +14,20 @@ class App extends Component {
   }
 
   addProduct(product){
-    console.log(this.state.products);
     let newA = this.state.products;
-    newA.map((i) =>{
-      if(i == product){
-        product.price = product.price + product.price;
-        newA.push(product);
-      } else {
-      }
-    })
-        newA.push(product);
+    let existingProduct = newA.find((p) => {
+        return p.name === product.name;
+    });
 
-    // if(this.state.products.length > 0){
-    //   this.state.products.map((p)=>{
-    //     if(p.name == product.name){
-    //         if(p.qtd == NaN){
-    //           p.qtd = 0;
-    //           p.qtd = p.qtd + 1;
-    //         } else {
-    //           p.qtd = p.qtd + 1;
-    //         }
-    //         newA.push(p);
-    //         this.setState({
-    //           products : this.newA
-    //         })
-    //     } else {
-          this.setState({
-            products: newA
-          });
-    //     }
-    //   })
-    // } else {
-    //     this.setState({
-    //         products: this.state.products.concat([product])
-    //     });
-    // }
-
+    if (existingProduct){
+      existingProduct.qtd = existingProduct.qtd + 1 || 1;
+    } else {
+      newA.push(product);
+    }
     
-
-      console.log(newA);
+    this.setState({
+      products: newA
+    });
   }
 
   removeProduct(){
