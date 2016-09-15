@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Router, Route, IndexRoute, hashHistory} from 'react-router';
+import ReactDOM from 'react-dom';
 import Products from './Products'
-import Cart from './Cart'
+import Cart from './Cart';
 import logo from '../logo.svg';
 import '../css/App.css';
 
@@ -21,10 +23,11 @@ class App extends Component {
 
     if (existingProduct){
       existingProduct.qtd = existingProduct.qtd + 1 || 1;
+      existingProduct.total = existingProduct.qtd * JSON.parse(existingProduct.price);
     } else {
       newA.push(product);
     }
-    
+
     this.setState({
       products: newA
     });

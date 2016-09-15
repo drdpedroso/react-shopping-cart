@@ -1,8 +1,12 @@
 .Products {
   text-align: left;
   background-color: #d9d9d9;
-  flex: 7; 
+  flex: 7;
   padding: 8px;
+}
+
+.button-add {
+  float:right;
 }
 
 @keyframes App-logo-spin {

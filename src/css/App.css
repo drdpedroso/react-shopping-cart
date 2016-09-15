@@ -4,13 +4,13 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 90px;
   float:left;
 }
 
 .App-header {
-  background-color: #222;
-  height: 100px;
+  background-color: #f2f2f2;
+  height: 70px;
   padding: 20px;
   color: white;
 }
@@ -30,6 +30,14 @@
 
 .wrapper > div:last-child {
  flex: 3
+}
+
+.title {
+  padding: 5px;
+}
+
+.list-item{
+  padding: 3px;
 }
 
 @keyframes App-logo-spin {
