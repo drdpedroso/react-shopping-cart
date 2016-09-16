@@ -22,9 +22,17 @@ class App extends Component {
     });
 
     if (existingProduct){
-      existingProduct.qtd = existingProduct.qtd + 1 || 1;
-      existingProduct.total = existingProduct.qtd * JSON.parse(existingProduct.price);
+      // if(existingProduct.total === 0) {
+      //   existingProduct.total = JSON.parse(existingProduct.price);
+      // } else {
+        existingProduct.qtd = existingProduct.qtd + 1 || 1;
+
+        existingProduct.total = existingProduct.qtd * JSON.parse(existingProduct.price);
+      // }
     } else {
+      if(product.total === 0 || product.total === undefined) {
+        product.total = JSON.parse(product.price);
+      }
       newA.push(product);
     }
 

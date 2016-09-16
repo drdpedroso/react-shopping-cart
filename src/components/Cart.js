@@ -6,6 +6,7 @@ class Cart extends Component {
 
     mountTable(){
       let listItems = this.props.products.map((item) =>{
+
       return (
           <li key={item.name}>
             {item.name} R${item.total} {item.qtd}
@@ -36,6 +37,7 @@ class Cart extends Component {
       <div>
         <h3 className="title"> Carrinho </h3>
           {this.mountTable()}
+          {this.cartTotal}
       </div>
     );
   }
