@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import '../css/Cart.css';
 
+let cartTotal = 0;
+
 class Cart extends Component {
 
     mountTable(){
       let listItems = this.props.products.map((item) =>{
-
+      if(item.qtd > 1){
+        cartTotal += item.price;
+      } else {
+        cartTotal = item.price;
+      }
       return (
           <li key={item.name}>
             {item.name} R${item.total} {item.qtd}
@@ -37,7 +43,7 @@ class Cart extends Component {
       <div>
         <h3 className="title"> Carrinho </h3>
           {this.mountTable()}
-          {this.cartTotal}
+          Total: {cartTotal}
       </div>
     );
   }

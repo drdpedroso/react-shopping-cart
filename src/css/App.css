@@ -36,8 +36,25 @@
   padding: 5px;
 }
 
-.list-item{
+.list-item {
   padding: 3px;
+}
+
+.tabs-menu {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+}
+
+.tabs-menu a {
+  padding: 10px;
+  border-bottom: #000000;
+  color: rgb(31, 200, 219);
+}
+
+
+.tabs-menu a:hover {
+  color: rgb(100, 204, 240);
 }
 
 @keyframes App-logo-spin {

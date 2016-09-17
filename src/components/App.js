@@ -22,11 +22,7 @@ class App extends Component {
     });
 
     if (existingProduct){
-      // if(existingProduct.total === 0) {
-      //   existingProduct.total = JSON.parse(existingProduct.price);
-      // } else {
         existingProduct.qtd = existingProduct.qtd + 1 || 1;
-
         existingProduct.total = existingProduct.qtd * JSON.parse(existingProduct.price);
       // }
     } else {
