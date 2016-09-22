@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, hashHistory} from 'react-router';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import '../css/App.css';
 import '../css/Products.css';
 
 const products = [
-  {name:'esfiha', price:10, qtd: 1},
-  {name:'esfiha 2', price:20, qtd: 1},
-  {name:'esfiha 3', price:5, qtd: 1},
-  {name:'esfiha 4', price:30, qtd: 1},
-  {name:'café', price:2, qtd: 1}
+  {name:'esfiha', price:10, qtd: 1, category: 'esfihas'},
+  {name:'esfiha 2', price:20, qtd: 1, category: 'esfihas'},
+  {name:'esfiha 3', price:5, qtd: 1, category: 'sobremesas'},
+  {name:'esfiha 4', price:30, qtd: 1, category: 'esfihas'},
+  {name:'café', price:2, qtd: 1, category: 'bebidas'}
 ];
 
 
@@ -16,6 +16,23 @@ class Products extends Component {
 
   selectProduct(item){
     this.props.addProduct(item);
+  }
+
+  mountTabs(){
+    let tabsArray = [];
+    let tabs = '';
+    products.map((p) => {
+      if(tabsArray.indexOf(p.category) < 0){
+        tabs += '<Tab>' + p.category + '</Tab>'
+      }
+    });
+
+    console.log(this.tabs);
+    return(
+      <TabList className="tabs-menu">
+        {tabs}
+      </TabList>
+    )
   }
 
   mountTable(){
@@ -41,11 +58,12 @@ class Products extends Component {
     return (
       <div>
         <h3 className="title"> Produtos </h3>
-        <div className="tabs-menu">
-          <a> Esfihas </a>
-          <a> Bebidas </a>
-          <a> Sobremesas </a>
-        </div>
+        <Tabs
+          onSelect={this.handleSelect}
+          selectedIndex={0}
+        >
+        {this.mountTabs()}
+        </Tabs>
         <ul className="Products">
           {this.mountTable()}
         </ul>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, hashHistory} from 'react-router';
-import ReactDOM from 'react-dom';
+// import { Router, Route, IndexRoute, hashHistory} from 'react-router';
+// import ReactDOM from 'react-dom';
 import Products from './Products'
 import Cart from './Cart';
 import logo from '../logo.svg';
