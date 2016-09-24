@@ -19,16 +19,18 @@ class Products extends Component {
   }
 
   mountTabs(){
-    let categories =  products.map((p) => {
-
+    let categories = [];
+    products.map((p) => {
+        if(categories.indexOf(p.category) < 0){
+          categories.push(p.category);
+        }
     });
-    let tabs = products.map((p) => {
+    let tabs = categories.map((c) => {
       return(
-        <Tab>{p.category}</Tab>
+        <Tab>{c}</Tab>
       )
     });
 
-    console.log(this.tabs);
     return(
       <TabList className="tabs-menu">
         {tabs}
