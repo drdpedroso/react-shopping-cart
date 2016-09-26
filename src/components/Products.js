@@ -14,20 +14,31 @@ const products = [
 
 class Products extends Component {
 
+  constructor(){
+    super();
+    this.categories = [];
+    this.productsArray = [{
+      category : '',
+      products: []
+    }];
+}
+
   selectProduct(item){
     this.props.addProduct(item);
   }
 
   mountTabs(){
-    let categories = [];
     products.map((p) => {
-        if(categories.indexOf(p.category) < 0){
-          categories.push(p.category);
+        if(this.categories.indexOf(p.category) < 0){
+          this.productsArray.push({
+            category: p.category
+          })
+          this.categories.push(p.category);
         }
     });
-    let tabs = categories.map((c) => {
+    let tabs = this.productsArray.map((c) => {
       return(
-        <Tab>{c}</Tab>
+        <Tab>{c.category}</Tab>
       )
     });
 
@@ -38,8 +49,29 @@ class Products extends Component {
     )
   }
 
+  mountTabContent() {
+    products.filter(filterByCategory);
+
+    let filterByCategory = (item) => {
+      this.productsArray.map((c) => {
+        if(item.category === c.category){
+          if(!c.products){
+            c.products = [];
+          } else {
+            c.products.push(item);
+          }
+        }
+      })
+    }
+    return(
+      <ul className="Products">
+        {this.mountTable()}
+      </ul>
+    )
+  }
+
   mountTable(){
-    let listItems = products.map((item) =>{
+    let listItems = this.productsArray.map((item) =>{
       return (
           <li key={item.name} className="list-item">
             {item.name} R${item.price}
@@ -63,13 +95,11 @@ class Products extends Component {
         <h3 className="title"> Produtos </h3>
         <Tabs
           onSelect={this.handleSelect}
-          selectedIndex={0}
+          selectedIndex={1}
         >
         {this.mountTabs()}
         </Tabs>
-        <ul className="Products">
-          {this.mountTable()}
-        </ul>
+        {this.mountTabContent()}
       </div>
     );
   }
