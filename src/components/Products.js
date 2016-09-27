@@ -71,7 +71,7 @@ class Products extends Component {
   }
 
   mountTable(){
-    let listItems = this.productsArray.map((item) =>{
+    let listItems = products.map((item) =>{
       return (
           <li key={item.name} className="list-item">
             {item.name} R${item.price}
@@ -99,7 +99,7 @@ class Products extends Component {
         >
         {this.mountTabs()}
         </Tabs>
-        {this.mountTabContent()}
+        {this.mountTable()}
       </div>
     );
   }
