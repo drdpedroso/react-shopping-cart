@@ -11,10 +11,13 @@ let y = [];
 let categories = ['esfihas', 'sobremesas', 'bebidas'];
 
 let reducer = (ac, item) => {
-  if(!ac[item.category]){
+  // console.log(item);
+  if(!ac.hasOwnProperty(item.category)){
+    console.log(item.category);
     ac[item.category] = [];
+    ac[item.category].push(item);
   } else {
-    let p =  products.find(x => x.category == item.category);
+    let p = products.find(x => x.category == item.category);
     ac[item.category].push(p);
   }
   return ac;
