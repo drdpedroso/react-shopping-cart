@@ -27,7 +27,6 @@ class Products extends Component {
 
   doReduce(){
     this.d = products.reduce(this.reducer, []);
-    console.log(this.d);
   }
 
   reducer(ac, item){
@@ -68,30 +67,18 @@ class Products extends Component {
   }
 
   mountTabContent() {
-    products.filter(filterByCategory);
-
-    let filterByCategory = (item) => {
-      this.productsArray.map((c) => {
-        if(item.category === c.category){
-          if(!c.products){
-            c.products = [];
-          } else {
-            c.products.push(item);
-          }
-        }
-      })
-    }
     return(
-      <ul className="Products">
-        {this.mountTable()}
-      </ul>
+      this.categories.map((item) => {
+          return this.mountTable(item)
+      })
     )
   }
 
-  mountTable(){
-    let listItems = products.map((item) =>{
+  mountTable(category){
+    let listItems = this.d[category].map((item) => {
+      console.log(item)
       return (
-          <li key={item.name} className="list-item">
+          <li className="list-item">
             {item.name} R${item.price}
             <button className="button-add" onClick={this.selectProduct.bind(this, item)}>+</button>
           </li>
@@ -118,7 +105,7 @@ class Products extends Component {
         >
         {this.mountTabs()}
         </Tabs>
-        {this.mountTable()}
+        {this.mountTabContent()}
       </div>
     );
   }
