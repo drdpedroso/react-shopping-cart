@@ -21,7 +21,25 @@ class Products extends Component {
       category : '',
       products: []
     }];
-}
+    this.d;
+  }
+
+
+  doReduce(){
+    this.d = products.reduce(this.reducer, []);
+    console.log(this.d);
+  }
+
+  reducer(ac, item){
+    if(!ac.hasOwnProperty(item.category)){
+      ac[item.category] = [];
+      ac[item.category].push(item);
+    } else {
+      let p = products.find(x => x.category == item.category);
+      ac[item.category].push(p);
+    }
+    return ac;
+  }
 
   selectProduct(item){
     this.props.addProduct(item);
@@ -90,12 +108,13 @@ class Products extends Component {
     }
 
   render() {
+    this.doReduce();
     return (
       <div>
         <h3 className="title"> Produtos </h3>
         <Tabs
           onSelect={this.handleSelect}
-          selectedIndex={1}
+          selectedIndex={0}
         >
         {this.mountTabs()}
         </Tabs>
