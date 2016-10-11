@@ -24,6 +24,9 @@ class Products extends Component {
     this.d;
   }
 
+  handleSelect(index, last) {
+    console.log('Selected tab: ' + index + ', Last tab: ' + last);
+  }
 
   doReduce(){
     this.d = products.reduce(this.reducer, []);
@@ -54,9 +57,12 @@ class Products extends Component {
         }
     });
     let tabs = this.productsArray.map((c) => {
-      return(
-        <Tab>{c.category}</Tab>
-      )
+      if(c.category){
+        return(
+          <Tab>{c.category}</Tab>
+        )
+      }
+
     });
 
     return(
@@ -69,19 +75,25 @@ class Products extends Component {
   mountTabContent() {
     return(
       this.categories.map((item) => {
-          return this.mountTable(item)
+          return (
+            <TabPanel>
+            {this.mountTable(item)}
+
+            </TabPanel>
+
+          )
       })
     )
   }
 
   mountTable(category){
     let listItems = this.d[category].map((item) => {
-      console.log(item)
       return (
-          <li className="list-item">
-            {item.name} R${item.price}
-            <button className="button-add" onClick={this.selectProduct.bind(this, item)}>+</button>
-          </li>
+            <li className="list-item">
+              {item.name} R${item.price}
+              <button className="button-add" onClick={this.selectProduct.bind(this, item)}>+</button>
+            </li>
+
         );
       });
 
@@ -99,13 +111,14 @@ class Products extends Component {
     return (
       <div>
         <h3 className="title"> Produtos </h3>
-        <Tabs
-          onSelect={this.handleSelect}
-          selectedIndex={0}
-        >
-        {this.mountTabs()}
+          <Tabs
+            onSelect={this.handleSelect}
+            selectedIndex={0}
+          >
+            {this.mountTabs()}
+            {this.mountTabContent()}
         </Tabs>
-        {this.mountTabContent()}
+
       </div>
     );
   }
