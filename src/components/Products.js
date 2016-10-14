@@ -77,10 +77,8 @@ class Products extends Component {
       this.categories.map((item) => {
           return (
             <TabPanel>
-            {this.mountTable(item)}
-
+              {this.mountTable(item)}
             </TabPanel>
-
           )
       })
     )
@@ -113,7 +111,6 @@ class Products extends Component {
         <h3 className="title"> Produtos </h3>
           <Tabs
             onSelect={this.handleSelect}
-            selectedIndex={0}
           >
             {this.mountTabs()}
             {this.mountTabContent()}
