@@ -37,8 +37,7 @@ class Products extends Component {
       ac[item.category] = [];
       ac[item.category].push(item);
     } else {
-      let p = products.find(x => x.category == item.category);
-      ac[item.category].push(p);
+      ac[item.category].push(item);
     }
     return ac;
   }
