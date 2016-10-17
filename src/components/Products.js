@@ -108,13 +108,10 @@ class Products extends Component {
     return (
       <div>
         <h3 className="title"> Produtos </h3>
-          <Tabs
-            onSelect={this.handleSelect}
-          >
-            {this.mountTabs()}
-            {this.mountTabContent()}
+        <Tabs onSelect={this.handleSelect}>
+          {this.mountTabs()}
+          {this.mountTabContent()}
         </Tabs>
-
       </div>
     );
   }

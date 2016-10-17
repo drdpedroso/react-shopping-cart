@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-// import { Router, Route, IndexRoute, hashHistory} from 'react-router';
-// import ReactDOM from 'react-dom';
+import { render } from 'react-dom'
+import { Router, Route, IndexRoute, hashHistory, browserHistory} from 'react-router';
+
 import Products from './Products'
 import Cart from './Cart';
 import logo from '../logo.svg';
@@ -24,7 +25,6 @@ class App extends Component {
     if (existingProduct){
         existingProduct.qtd = existingProduct.qtd + 1 || 1;
         existingProduct.total = existingProduct.qtd * JSON.parse(existingProduct.price);
-      // }
     } else {
       if(product.total === 0 || product.total === undefined) {
         product.total = JSON.parse(product.price);
@@ -49,6 +49,11 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
           </div>
         </div>
+        <Router history={browserHistory}>
+           <Route path="/">
+           Teste
+           </Route>
+        </Router>
         <div className="wrapper">
           <Products addProduct={this.addProduct.bind(this)} />
           <Cart products={this.state.products} total={this.state.total}/>
