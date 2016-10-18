@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom'
-import { Router, Route, IndexRoute, hashHistory, browserHistory} from 'react-router';
+import { Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 import Products from './Products'
+import Checkout from './Checkout'
 import Cart from './Cart';
 import logo from '../logo.svg';
 import '../css/App.css';
@@ -50,9 +51,9 @@ class App extends Component {
           </div>
         </div>
         <Router history={browserHistory}>
-           <Route path="/">
-           Teste
-           </Route>
+          <Route path='/' >
+            <Route path='checkout' component={Checkout}/>
+          </Route>
         </Router>
         <div className="wrapper">
           <Products addProduct={this.addProduct.bind(this)} />
