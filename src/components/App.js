@@ -36,6 +36,10 @@ class App extends Component {
     });
   }
 
+  doCheckout(){
+    console.log(this.state.products)
+  }
+
   removeProduct(){
 
   }
@@ -51,7 +55,7 @@ class App extends Component {
 
         <div className="wrapper">
           <Products addProduct={this.addProduct.bind(this)} />
-          <Cart products={this.state.products} total={this.state.total}/>
+          <Cart products={this.state.products} total={this.state.total} checkout={this.doCheckout.bind(this)}/>
         </div>
       </div>
     );

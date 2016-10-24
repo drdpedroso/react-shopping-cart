@@ -6,8 +6,7 @@ class Checkout extends Component {
   render() {
     return (
       <div>
-        <h3 className="title"> Checkout </h3>
-          Total:
+        <button onClick={this.props.checkout}>Checkout</button>
       </div>
     );
   }

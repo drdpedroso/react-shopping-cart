@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import '../css/Cart.css';
 
+import Checkout from './Checkout';
+
 let cartTotal = 0;
 
 class Cart extends Component {
@@ -34,8 +36,6 @@ class Cart extends Component {
           </div>
         );
       }
-
-
     }
 
   render() {
@@ -44,6 +44,7 @@ class Cart extends Component {
         <h3 className="title"> Carrinho </h3>
           {this.mountTable()}
           Total: {cartTotal}
+          <Checkout checkout={this.props.checkout.bind(this)}></Checkout>
       </div>
     );
   }
